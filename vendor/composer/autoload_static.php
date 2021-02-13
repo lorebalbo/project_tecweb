@@ -484,6 +484,7 @@ class ComposerStaticInited7f627020232bb9a571bdd66c3a3961
     );
 
     public static $classMap = array (
+        'AdminsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/AdminsTableSeeder.php',
         'App\\Admin' => __DIR__ . '/../..' . '/app/Admin.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -4882,6 +4883,7 @@ class ComposerStaticInited7f627020232bb9a571bdd66c3a3961
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
+        'UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeeder.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'Webmozart\\Assert\\Mixin' => __DIR__ . '/..' . '/webmozart/assert/src/Mixin.php',

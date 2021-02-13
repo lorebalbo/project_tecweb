@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
 Route::prefix('admin')->group(function() {
     //Dashboard route
@@ -35,4 +36,10 @@ Route::prefix('admin')->group(function() {
     //Register routes
     Route::get('/register', 'Auth\AdminRegisterController@showRegistrationForm')->name('admin.register');
     Route::post('/register', 'Auth\AdminRegisterController@register')->name('admin.register.submit');
+
+    // Password reset routes
+    Route::get('/password/reset', 'Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
+    Route::post('/password/email', 'Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
+    Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
+    Route::post('/password/reset', 'Auth\AdminResetPasswordController@reset')->name('admin.password.update');
 }); 

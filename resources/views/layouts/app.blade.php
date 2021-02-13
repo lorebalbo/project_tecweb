@@ -26,7 +26,9 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+                    aria-controls="navbarSupportedContent" aria-expanded="false" 
+                    aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -50,21 +52,36 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" 
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                                @if(\Illuminate\Support\Facades\Auth::guard('admin')->check())
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('admin.logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('admin-logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
+                                        <form id="admin-logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                @else
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('user.logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('user-logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+
+                                        <form id="user-logout-form" action="{{ route('user.logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
+                                @endif      
                             </li>
                         @endguest
                     </ul>
