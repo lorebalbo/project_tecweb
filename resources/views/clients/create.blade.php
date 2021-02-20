@@ -15,7 +15,7 @@
         </div>
     @endif
 
-    <form action="" method="">
+    <form action="{{ URL::action('ClientController@index') }}" method="POST">
         <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
         <div class="form-group">
             <label for="contact_name">Nome Referente</label>
@@ -70,6 +70,7 @@
                         if (data.status === 'ok'){
                             console.log('Hey!');
                         }
+                        window.location.href = "/client";
                     }, 
                     error: function(response, stato) {
                         console.log(stato);

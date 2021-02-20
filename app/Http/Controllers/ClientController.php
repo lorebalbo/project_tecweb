@@ -50,6 +50,12 @@ class ClientController extends Controller
         $client->save();
 
         return json_encode(['status' => 'ok']);
+
+        //Client::create($input);
+
+        //return redirect('/client');
+
+        
     }
 
     /**
@@ -60,7 +66,7 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        return view('clients.edit', compact('client'));
+        //
     }
 
     /**

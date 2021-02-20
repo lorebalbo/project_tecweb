@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
 Route::get('/home', 'ProjectController@index')->name('home');
+
 Route::resource('project', 'ProjectController')->except(['destroy']); // Crea tutte le route per il CRUD di una risorsa
 Route::get('/project/{project}/delete', 'ProjectController@destroy');
 
