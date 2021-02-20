@@ -5,6 +5,16 @@
 <div class="container">
     <h1>Inserisci un nuovo progetto</h1>
 
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form action="{{ URL::action('ProjectController@store') }}" method="POST">
         {{ csrf_field() }}
 
@@ -48,6 +58,15 @@
             <label for="note">Note</label>
             <input type="text" class="form-control" name="note">
             <small class="form-text text-muted">Inserisci qui le eventuali note</small>
+        </div>
+
+        <div class="form-group">
+            <label for="">Seleziona un cliente</label>
+            <select class="form-control" name="client_id">
+            @foreach($clients as $client)
+                <option value="{{ $client->id }}"> {{ $client->business_name }} </option>
+            @endforeach 
+            </select>
         </div>
 
         <button type="submit" class="btn btn-primary">Salva</button>

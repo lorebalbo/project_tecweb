@@ -15,4 +15,11 @@ class Project extends Model
         'cost_pr_hour',
         'note'
     ];
+
+    public function client()
+    {
+        return $this->belongsTo('App\Client');
+    }
 }
+
+

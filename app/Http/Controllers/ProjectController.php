@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\Client;
 use Illuminate\Http\Request;
 use Log;
 
@@ -27,7 +28,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+        $clients = Client::all();
+
+        return view('projects.create', compact('clients'));
     }
 
     /**
@@ -39,6 +42,19 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+
+        //Log::info($input);
+
+        $validatedData = $request->validate([        
+            'name'                  => 'required',
+            'description'           => 'required',
+            'start_date'            => 'required',
+            'expected_end_date'     => 'required',
+            'effective_end_date'    => 'required',
+            'cost_pr_hour'          => 'required',
+            'note'                  => 'required',
+            'client_id'             => 'required',
+        ]);
 
         Project::create($input);
 

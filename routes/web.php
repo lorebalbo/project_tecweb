@@ -26,6 +26,10 @@ Route::get('/home', 'ProjectController@index')->name('home');
 Route::resource('project', 'ProjectController')->except(['destroy']); // Crea tutte le route per il CRUD di una risorsa
 Route::get('/project/{project}/delete', 'ProjectController@destroy');
 
+Route::resource('client', 'ClientController')->except(['destroy']);
+Route::get('/client/{client}/delete', 'ClientController@destroy');
+
+
 Route::prefix('admin')->group(function() {
     //Dashboard route
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
