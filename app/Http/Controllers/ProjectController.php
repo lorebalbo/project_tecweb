@@ -58,7 +58,7 @@ class ProjectController extends Controller
 
         Project::create($input);
 
-        return redirect('/project');
+        return redirect('/admin/project');
     }
 
     /**
@@ -103,7 +103,7 @@ class ProjectController extends Controller
         $project->note = $input['note'];
         $project->save();
 
-        return redirect('/project');
+        return redirect('/admin/project');
     }
 
     /**
@@ -116,6 +116,6 @@ class ProjectController extends Controller
     {
         $project->delete();
 
-        return redirect('/project');
+        return redirect('/admin/project');
     }
 }

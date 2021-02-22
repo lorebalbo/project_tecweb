@@ -12,15 +12,17 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([[
-	        'name' 			=> 'Filippo',
-	        'surname' 		=> 'Magri',
-	        'email' 		=> 'filippo.magri@gmail.com',
+			'is_admin'		=> true,
+	        'name' 			=> 'Lorenzo',
+	        'surname' 		=> 'Balboni',
+	        'email' 		=> 'lorenzo.balboni@gmail.com',
 	        'password' 		=> bcrypt('password'),
 	        'color' 		=> '#3498DB',
 	        'updated_at' 	=> date('Y-m-d h:i:s'),
 			'created_at' 	=> date('Y-m-d h:i:s')		        
 		], [
-	        'name' 			=> 'Federica',
+	        'is_admin'		=> true,
+			'name' 			=> 'Federica',
 	        'surname' 		=> 'Baroni',
 	        'email' 		=> 'federica.baroni@gmail.com',
 	        'password' 		=> bcrypt('password'),
@@ -28,7 +30,8 @@ class UsersTableSeeder extends Seeder
 	        'updated_at' 	=> date('Y-m-d h:i:s'),
 			'created_at' 	=> date('Y-m-d h:i:s')		        
 		], [
-	        'name' 			=> 'Giovanni',
+	        'is_admin'		=> false,
+			'name' 			=> 'Giovanni',
 	        'surname' 		=> 'Bica',
 	        'email' 		=> 'giovanni.bica@gmail.com',
 	        'password' 		=> bcrypt('password'),

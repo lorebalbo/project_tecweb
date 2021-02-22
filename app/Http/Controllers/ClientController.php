@@ -53,8 +53,7 @@ class ClientController extends Controller
 
         //Client::create($input);
 
-        //return redirect('/client');
-
+        //return redirect('/admin/client');
         
     }
 
@@ -97,7 +96,7 @@ class ClientController extends Controller
         $client->business_name = $input['business_name'];
         $client->save();
 
-        return redirect('/client');
+        return redirect('/admin/client');
     }
 
     /**
@@ -110,6 +109,6 @@ class ClientController extends Controller
     {
         $client->delete();
 
-        return redirect('/client');
+        return redirect('/admin/client');
     }
 }

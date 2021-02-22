@@ -15,7 +15,7 @@
         </div>
     @endif
 
-    <form action="{{ URL::action('ClientController@index') }}" method="POST">
+    <form action="" method="">
         <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
         <div class="form-group">
             <label for="contact_name">Nome Referente</label>
@@ -60,7 +60,7 @@
 
             if(contact_name.length > 0) {
                 $.ajax({
-                    url: "/client", 
+                    url: "/admin/client", 
                     type: "POST",
                     dataType: "json",
                     data: { 'contact_name': contact_name, 'contact_surname': contact_surname, 'contact_email': contact_email, 'business_name': business_name, '_token': _token },
@@ -70,7 +70,7 @@
                         if (data.status === 'ok'){
                             console.log('Hey!');
                         }
-                        window.location.href = "/client";
+                        window.location.href = "/admin/client";
                     }, 
                     error: function(response, stato) {
                         console.log(stato);

@@ -19,12 +19,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/home', 'ProjectController@index')->name('home');
+Route::get('admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
 
-Route::resource('project', 'ProjectController')->except(['destroy']); // Crea tutte le route per il CRUD di una risorsa
-Route::get('/project/{project}/delete', 'ProjectController@destroy');
+//Route::get('/home', 'ProjectController@index')->name('home');
 
-Route::resource('client', 'ClientController')->except(['destroy']);
-Route::get('/client/{client}/delete', 'ClientController@destroy');
+Route::resource('admin/project', 'ProjectController')->except(['destroy'])->middleware('is_admin'); // Crea tutte le route per il CRUD di una risorsa
+Route::get('/admin/project/{project}/delete', 'ProjectController@destroy');
+
+Route::resource('admin/client', 'ClientController')->except(['destroy']);
+Route::get('/admin/client/{client}/delete', 'ClientController@destroy');

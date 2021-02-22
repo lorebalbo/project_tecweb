@@ -67,8 +67,14 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
-                    @auth
+                    @auth <!-- Controllo se l'utente è loggato -->
+                        @if(Auth::User()->is_admin=='1')  <!-- Controllo se l'utente è admin -->
+                        <!-- Admin -->
+                        <a href="{{ url('/admin/home') }}">Home</a>
+                        @else
+                        <!-- Utente semplice -->
                         <a href="{{ url('/home') }}">Home</a>
+                        @endif
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
