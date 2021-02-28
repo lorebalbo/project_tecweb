@@ -31,7 +31,8 @@
                 <td>{{ $p->cost_pr_hour }} €</td>
                 <td>{{ $p->note }}</td>
                 <td>{{ $p->client->business_name }}</td>
-                <td><a href="{{ URL::action('ProjectController@edit', $p) }}" class="btn btn-outline-primary btn-sm">Modifica</a></td>
+                <td><a href="{{ URL::action('ProjectController@edit', $p) }}" class="btn btn-outline-primary btn-sm">Modifica</a>
+                    <a href="{{ URL::action('UserProjectController@index', $p) }}" class="btn btn-outline-primary btn-sm">Utenti associati</a></td>
             </tr>
             @endforeach
         </tbody>

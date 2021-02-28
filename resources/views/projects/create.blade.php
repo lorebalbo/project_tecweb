@@ -61,13 +61,13 @@
         </div>
 
         <div class="form-group">
-            <label for="">Seleziona un cliente</label>
+            <label for="client_id">Seleziona un cliente</label>
             <select class="form-control" name="client_id">
             @foreach($clients as $client)
                 <option value="{{ $client->id }}"> {{ $client->business_name }} </option>
             @endforeach 
             </select>
-        </div>
+        </div>        
 
         <button type="submit" class="btn btn-primary">Salva</button>
         <a href="{{ URL::action('ProjectController@index') }}" class="btn btn-secondary">Indietro</a>

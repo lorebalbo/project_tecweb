@@ -14,7 +14,7 @@ class AddClientIdToProjectsTable extends Migration
     public function up()
     {
         Schema::table('projects', function (Blueprint $table) {
-            $table->bigInteger('client_id')->unsigned()->default(1)->after('id');
+            $table->bigInteger('client_id')->unsigned();
 
             $table->foreign('client_id')
                     ->references('id')->on('clients')

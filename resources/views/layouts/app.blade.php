@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -45,9 +46,22 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ URL::action('ClientController@index') }}">Clienti</a>
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ URL::action('UserController@index') }}">Utenti</a>
+                            </li>
                         </ul>
                         @else
                         <!-- Utente semplice -->
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ URL::action('ReportController@index') }}">Report</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ URL::action('WorkController@index') }}">Scheda Ore</a>
+                            </li>
+                        </ul>
                         @endif
                     @endauth
 

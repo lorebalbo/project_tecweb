@@ -43,9 +43,10 @@ class ProjectController extends Controller
     {
         $input = $request->all();
 
-        //Log::info($input);
-
-        $validatedData = $request->validate([        
+        Log::info($input);
+/*
+        $validatedData = $request->validate([  
+            'client_id'             => 'required',      
             'name'                  => 'required',
             'description'           => 'required',
             'start_date'            => 'required',
@@ -53,10 +54,21 @@ class ProjectController extends Controller
             'effective_end_date'    => 'required',
             'cost_pr_hour'          => 'required',
             'note'                  => 'required',
-            'client_id'             => 'required',
-        ]);
+            
+        ]);*/
 
-        Project::create($input);
+        $project = new Project();
+        $project->name = $input['name'];
+        $project->description = $input['description'];
+        $project->start_date = $input['start_date'];
+        $project->expected_end_date = $input['expected_end_date'];
+        $project->effective_end_date = $input['effective_end_date'];
+        $project->cost_pr_hour = $input['cost_pr_hour'];
+        $project->note = $input['note'];
+        $project->client_id = $input['client_id'];
+        $project->save();
+
+        //Project::create($input);
 
         return redirect('/admin/project');
     }
@@ -80,6 +92,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+        Log::info($project);
         return view('projects.edit', compact('project'));
     }
 

@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'is_admin'
+        'is_admin', 'name', 'surname', 'color', 'email', 'password' 
     ];
 
     /**
@@ -36,4 +36,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Effettua l'hash della password quando viene inserito 
+     * un nuovo utente da admin/user/create
+     */    
+    public function setPasswordAttribute($password)
+    {   
+        $this->attributes['password'] = bcrypt($password);
+    }
+
+    public function userProject()
+    {
+        return $this->hasMany('App\UserProject');
+    }
 }
