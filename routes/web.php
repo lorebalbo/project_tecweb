@@ -37,11 +37,17 @@ Route::get('/admin/user/{user}/delete', 'UserController@destroy');
 Route::resource('admin/user_project', 'UserProjectController')->except(['destroy'])->middleware('is_admin');
 Route::get('/admin/user_project/{user_project}/delete', 'UserProjectController@destroy');*/
 
+
 Route::get('admin/user_project/{project}/index', 'UserProjectController@index')->name('userproject.index')->middleware('is_admin');
 Route::get('admin/user_project/{project}/create', 'UserProjectController@create')->name('userproject.create')->middleware('is_admin');
 Route::post('admin/user_project/store', 'UserProjectController@store')->name('userproject.store')->middleware('is_admin');
-Route::get('admin/user_project/{project}/delete', 'UserProjectController@destroy')->name('userproject.destroy')->middleware('is_admin');
+Route::get('admin/user_project/{project}/edit', 'UserProjectController@edit')->name('userproject.edit')->middleware('is_admin');
 
+Route::get('admin/user_project/{user_project}/delete/{project}', 'UserProjectController@destroy')->name('userproject.destroy')->middleware('is_admin');
+
+
+//Route::resource('admin/user_project', 'UserProjectController')->except(['destroy'])->middleware('is_admin');
+//Route::get('/admin/user_project/{user_project}/delete', 'UserProjectController@destroy');;
 
 
 
@@ -52,6 +58,11 @@ Route::get('admin/user_project/{project}/delete', 'UserProjectController@destroy
 Route::resource('report', 'ReportController')->except(['destroy']);
 Route::get('/report/{report}/delete', 'ReportController@destroy');
 
-Route::resource('work', 'WorkController')->except(['destroy']);
+Route::resource('work', 'WorkController')->except(['destroy']);;
 Route::get('/work/{work}/delete', 'WorkController@destroy');
+Route::post('/work/search', 'WorkController@search')->name('work.search');
+
+
+
+
 

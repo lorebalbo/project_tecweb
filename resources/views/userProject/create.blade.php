@@ -41,7 +41,7 @@
         </div>        
 
         <button type="submit" class="btn btn-primary">Salva</button>
-        <a href="" class="btn btn-secondary">Indietro</a>
+        <a href="{{ URL::action('UserProjectController@index', $project) }}" class="btn btn-secondary">Indietro</a>
     </form>
 </div>
 

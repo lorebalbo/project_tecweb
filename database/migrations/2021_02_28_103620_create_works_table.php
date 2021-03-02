@@ -14,7 +14,8 @@ class CreateWorksTable extends Migration
     public function up()
     {
         Schema::create('works', function (Blueprint $table) {
-            $table->primary(['user_id', 'project_id', 'date']);
+            //$table->primary(['user_id', 'project_id', 'date']);
+            $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('project_id')->unsigned();
             $table->string('description');

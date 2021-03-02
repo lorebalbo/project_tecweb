@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use App\Client;
+use App\User;
 use Illuminate\Http\Request;
 use Log;
 
@@ -81,7 +82,19 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        $project_id = $project->id;
+
+        /* Ottengo gli utenti associati al progetto */
+        $users = User::join('user_projects','user_projects.user_id','users.id')
+        ->join('projects','projects.id','user_projects.project_id')
+        ->where('projects.id', $project_id)
+        ->select('user_projects.*','users.color','users.is_admin','users.name','users.surname','users.email')
+        ->get();
+
+        LOG::info($users);
+
+        return view('userProject.index', compact('users'), compact('project'));
+
     }
 
     /**

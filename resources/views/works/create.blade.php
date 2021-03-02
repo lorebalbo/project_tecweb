@@ -3,7 +3,13 @@
 @section('content')
 
 <div class="container">
-    <h1>Inserisci giornata di lavoro</h1>
+    
+    <div class="pb-2 mt-4 mb-2 border-bottom">
+        <h1>Compilazione Scheda Ore</h1>
+    </div>
+    <p>Inserisci i dettagli della giornata di lavoro</p>
+
+    <div class="mt-5"></div> 
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -27,7 +33,7 @@
         <div class="form-group">
             <label for="date">Data</label>
             <input type="date" class="form-control" name="date">
-            <small class="form-text text-muted">Inserisci la data</small>
+            <small class="form-text text-muted">Inserisci la data in cui hai lavorato al progetto</small>
         </div>
 
         <div class="form-group">
@@ -37,15 +43,15 @@
         </div>
 
         <div class="form-group">
-            <label for="project_id">Seleziona un progetto</label>
-            <select class="form-control" name="project_id">
+            <label for="project_id">Seleziona il progetto</label>
+            <select class="custom-select" name="project_id">
             @foreach($projects as $project)
                 <option value="{{ $project->id }}"> {{ $project->name }} </option>
             @endforeach 
             </select>
         </div>        
 
-        <button type="submit" class="btn btn-primary">Salva</button>
+        <button type="submit" class="btn btn-light">Salva</button>
         <a href="{{ URL::action('WorkController@index') }}" class="btn btn-secondary">Indietro</a>
     </form>
 </div>
