@@ -24,7 +24,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark shadow-sm" style="background-color: #0A3E52;">
             <div class="container">
                 
                 <!-- Ombra bottone Home
@@ -50,6 +50,14 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ URL::action('UserController@index') }}">Utenti</a>
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ URL::action('AdminReportController@project_hours') }}">Report Ore Progetti</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ URL::action('AdminReportController@client_hours') }}">Report Ore Clienti</a>
+                            </li>
                         </ul>
                         @else
                         <!-- Utente semplice -->
@@ -59,7 +67,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link {{ request()->is('report') ? 'active' : ''}}" href="{{ URL::action('ReportController@index') }}">Report</a>
+                                <a class="nav-link {{ request()->is('report') ? 'active' : ''}}" href="{{ URL::action('ReportController@index') }}">Report Ore</a>
                             </li>
 
                             <li class="nav-item">

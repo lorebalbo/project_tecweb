@@ -32,7 +32,7 @@
 
         <div class="form-group">
             <label for="start_date">Data inizio</label>
-            <input type="date" class="form-control" name="start_date">
+            <input type="date" class="form-control" name="start_date" placeholder="dd-mm-yyyy">
             <small class="form-text text-muted">Inserisci la data di inizio del progetto</small>
         </div>
 

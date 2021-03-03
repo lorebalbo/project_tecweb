@@ -6,7 +6,7 @@
     <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Scheda Ore</h1> 
     </div>
-    <p>Elenco attività svolte</p>
+    <p>Elenco delle attività svolte dal {{ date('d/m/Y', strtotime($request['from_date'])) }} al {{ date('d/m/Y', strtotime($request['to_date'])) }}</p>
 
     <div class="mt-5"></div>
     

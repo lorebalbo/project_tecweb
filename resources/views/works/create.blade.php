@@ -7,7 +7,7 @@
     <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Compilazione Scheda Ore</h1>
     </div>
-    <p>Inserisci i dettagli della giornata di lavoro</p>
+    <p class="lead">Inserisci i dettagli della giornata di lavoro</p>
 
     <div class="mt-5"></div> 
 
@@ -20,6 +20,8 @@
             </ul>
         </div>
     @endif
+
+    
 
     <form action="{{ URL::action('WorkController@store') }}" method="POST">
         {{ csrf_field() }}

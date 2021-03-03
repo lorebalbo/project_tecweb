@@ -45,18 +45,15 @@ class ProjectController extends Controller
         $input = $request->all();
 
         Log::info($input);
-/*
+
         $validatedData = $request->validate([  
             'client_id'             => 'required',      
             'name'                  => 'required',
-            'description'           => 'required',
+            'description'           => 'required|string|max:144',
             'start_date'            => 'required',
-            'expected_end_date'     => 'required',
-            'effective_end_date'    => 'required',
-            'cost_pr_hour'          => 'required',
-            'note'                  => 'required',
-            
-        ]);*/
+            'expected_end_date'     => 'required|after_or_equal:start_date',
+            'cost_pr_hour'          => 'required',            
+        ]);
 
         $project = new Project();
         $project->name = $input['name'];
@@ -82,18 +79,9 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        $project_id = $project->id;
+        LOG::info($project);
 
-        /* Ottengo gli utenti associati al progetto */
-        $users = User::join('user_projects','user_projects.user_id','users.id')
-        ->join('projects','projects.id','user_projects.project_id')
-        ->where('projects.id', $project_id)
-        ->select('user_projects.*','users.color','users.is_admin','users.name','users.surname','users.email')
-        ->get();
-
-        LOG::info($users);
-
-        return view('userProject.index', compact('users'), compact('project'));
+        return view('projects.show', compact('project'));
 
     }
 
@@ -119,6 +107,16 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $input = $request->all();
+
+        $validatedData = $request->validate([  
+            'client_id'             => 'required',      
+            'name'                  => 'required',
+            'description'           => 'required|string|max:144',
+            'start_date'            => 'required',
+            'expected_end_date'     => 'required|after_or_equal:start_date',
+            'effective_end_date'    => 'required|after_or_equal:start_date',
+            'cost_pr_hour'          => 'required|numeric',
+        ]);
 
         $project->name = $input['name'];
         $project->description = $input['description'];

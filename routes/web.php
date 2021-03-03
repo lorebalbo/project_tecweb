@@ -50,17 +50,35 @@ Route::get('admin/user_project/{user_project}/delete/{project}', 'UserProjectCon
 //Route::get('/admin/user_project/{user_project}/delete', 'UserProjectController@destroy');;
 
 
+/* Report Admin */
+
+/* 5) Visualizzare il totale delle ore spese per ogni progetto */
+Route::get('admin/admin_report/project_hours', 'AdminReportController@project_hours')->name('admin_report.project_hours')->middleware('is_admin');
+Route::post('admin/admin_report/search_project_hours', 'AdminReportController@search_project_hours')->name('admin_report.search_project_hours')->middleware('is_admin');
+
+/* 6) Visualizzare il totale delle ore spese per ogni cliente  */ 
+Route::get('admin/admin_report/client_hours', 'AdminReportController@client_hours')->name('admin_report.client_hours')->middleware('is_admin');
+Route::post('admin/admin_report/search_client_hours', 'AdminReportController@search_client_hours')->name('admin_report.search_client_hours')->middleware('is_admin');
 
 
 
-//utente semplice
 
-Route::resource('report', 'ReportController')->except(['destroy']);
-Route::get('/report/{report}/delete', 'ReportController@destroy');
 
-Route::resource('work', 'WorkController')->except(['destroy']);;
-Route::get('/work/{work}/delete', 'WorkController@destroy');
-Route::post('/work/search', 'WorkController@search')->name('work.search');
+
+/* Utente Semplice */
+
+/* 3) Visualizzare il riepilogo delle ore spese su ogni progettp*/
+Route::resource('report', 'ReportController')->except(['destroy'])->middleware('auth');
+Route::get('/report/{report}/delete', 'ReportController@destroy')->middleware('auth');
+
+/* 1) Diario mesile
+ * 2)Inserimento/modifica/cancellazione scheda ore
+ * 
+ * Cerca attività tra due date
+ */ 
+Route::resource('work', 'WorkController')->except(['destroy'])->middleware('auth');
+Route::get('/work/{work}/delete', 'WorkController@destroy')->middleware('auth');
+Route::post('/work/search', 'WorkController@search')->name('work.search')->middleware('auth');
 
 
 

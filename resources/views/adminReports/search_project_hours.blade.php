@@ -6,19 +6,22 @@
     <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Report</h1>      
     </div>
-    <p class="lead">In questa pagina puoi visualizzare il totale delle ore che hai speso su ogni progetto</p>  
 
+    <div class="mt-5"></div>  
+
+    <p>Ecco il totale delle ore spese su ogni progetto dal {{ date('d/m/Y', strtotime($request['from_date'])) }} al {{ date('d/m/Y', strtotime($request['to_date'])) }}</p>  
+    <a href="{{ URL::action('AdminReportController@project_hours') }}" class="btn btn-secondary float-md-right mb-2">Indietro</a>
     <div class="mt-5"></div>     
 
     <table class="table">
-        <thead class="" style="color: #ffffff; background-color: #0A3E52;">
+        <thead class="thead-dark">
             <tr>
                 <th scope="col">Progetto</th>
                 <th scope="col">Ore Totali </th>
             </tr>
         </thead>
         <tbody>
-            @foreach($works as $p)
+            @foreach($project_hours as $p)
             <tr>
                 <td>{{ $p->name }}</td>
                 <td>{{ $p->ore }}</td>            

@@ -24,16 +24,22 @@
         <input type="hidden" name="_method" value="PATCH">
         {{ csrf_field() }}
 
-        <div class="form-group">
+        <div class="form-group" style="display: none;">
             <label for="user_id">Utente</label>
             <input type="text" class="form-control" name="user_id" value="{{ $work->user_id }}" readonly>
             <small class="form-text text-muted">Il mio id</small>
         </div>
         
-        <div class="form-group">
+        <div class="form-group" style="display: none;">
             <label for="project_id">Progetto</label>
             <input type="text" class="form-control" name="project_id" value="{{ $work->project_id }}" readonly>
             <small class="form-text text-muted">L'id del projetto</small>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Progetto</label>
+            <input type="text" class="form-control" name="name" value="{{ $project[0]->name }}" readonly>
+            <small class="form-text text-muted">Nome del projetto</small>
         </div>
 
         <div class="form-group">
