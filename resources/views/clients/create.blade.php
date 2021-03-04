@@ -23,6 +23,12 @@
     <form action="" method="">
         <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
         <div class="form-group">
+            <label for="business_name">Ragione Sociale</label>
+            <input type="text" class="form-control" name="business_name" id="business_name">
+            <small class="form-text text-muted">Inserisci la ragione sociale</small>
+        </div>
+        
+        <div class="form-group">
             <label for="contact_name">Nome Referente</label>
             <input type="text" class="form-control" name="contact_name" id="contact_name">
             <small class="form-text text-muted">Inserisci il nome del referente</small>
@@ -38,12 +44,6 @@
             <label for="contact_email">Email Referente</label>
             <input type="text" class="form-control" name="contact_email" id="contact_email">
             <small class="form-text text-muted">Inserisci l'email del referente'</small>
-        </div>
-
-        <div class="form-group">
-            <label for="business_name">Ragione Sociale</label>
-            <input type="text" class="form-control" name="business_name" id="business_name">
-            <small class="form-text text-muted">Inserisci la ragione sociale</small>
         </div>
 
         <button id="add-class-btn" type="submit" class="btn btn-dark" >Salva</button>

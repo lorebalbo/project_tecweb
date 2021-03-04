@@ -16,6 +16,8 @@ class Project extends Model
         'note'
     ];
 
+    
+
     public function client()
     {
         return $this->belongsTo('App\Client');

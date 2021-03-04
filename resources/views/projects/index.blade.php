@@ -26,9 +26,9 @@
                 <th scope="row">{{ $p->name }}</th>
                 <td>{{ $p->description }}</td>
                 <td>{{ $p->client->business_name }}</td>
-                <td><a href="{{ URL::action('ProjectController@edit', $p) }}" class="btn btn-outline-dark btn-sm">Modifica</a>
-                    <a href="{{ URL::action('UserProjectController@index', $p) }}" class="btn btn-outline-dark btn-sm">Utenti associati</a>
-                    <a href="{{ URL::action('ProjectController@show', $p) }}" class="btn btn-outline-dark btn-sm">Dettagli</a></td>
+                <td><a href="{{ URL::action('ProjectController@edit', $p) }}" class="btn btn-outline-dark btn-sm mt-1">Modifica</a>
+                    <a href="{{ URL::action('UserProjectController@index', $p) }}" class="btn btn-outline-dark btn-sm mt-1">Utenti associati</a>
+                    <a href="{{ URL::action('ProjectController@show', $p) }}" class="btn btn-outline-dark btn-sm mt-1">Dettagli</a></td>
             </tr>
             @endforeach
         </tbody>

@@ -6,7 +6,7 @@
     <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Report</h1>      
     </div>
-    <p class="lead">In questa pagina puoi visualizzare il totale delle ore che hai speso su ogni progetto</p>  
+    <p class="lead">Visualizza il totale delle ore che hai speso su ogni progetto</p>  
 
     <div class="mt-5"></div>     
 

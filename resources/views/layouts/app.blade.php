@@ -87,11 +87,11 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link {{ Route::is('project.index','project.create','project.edit','project.show','userproject.index','userproject.create') ? 'active' : ''}}" href="{{ URL::action('ProjectController@index') }}">Progetti</a>
+                                <a class="nav-link {{ Route::is('client.index','client.create','client.edit') ? 'active' : ''}}" href="{{ URL::action('ClientController@index') }}">Clienti</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link {{ Route::is('client.index','client.create','client.edit') ? 'active' : ''}}" href="{{ URL::action('ClientController@index') }}">Clienti</a>
+                                <a class="nav-link {{ Route::is('project.index','project.create','project.edit','project.show','userproject.index','userproject.create') ? 'active' : ''}}" href="{{ URL::action('ProjectController@index') }}">Progetti</a>
                             </li>
 
                             <li class="nav-item">

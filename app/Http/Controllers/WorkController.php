@@ -62,7 +62,11 @@ class WorkController extends Controller
         ->join('users','users.id','user_projects.user_id')
         ->where('user_projects.user_id', $userId)
         ->where('effective_end_date','>',Carbon::now())
-        ->orWhereNull('projects.effective_end_date')
+        ->orWhere(function($query) use ($userId){
+            $query->where('user_projects.user_id', $userId)
+                ->whereNull('projects.effective_end_date');
+        })
+        
         ->get();
         //LOG::info($projects);
 

@@ -38,7 +38,7 @@
 
         <div class="form-group">
             <label for="start_date">Data inizio</label>
-            <input type="date" class="form-control" name="start_date" value="{{ $project->start_date }}">
+            <input type="date" class="form-control" name="start_date" date-date-format="DD MM YYYY" value="{{ $project->start_date }}">
             <small class="form-text text-muted">Modifica la data di inizio del progetto</small>
         </div>
 

@@ -21,7 +21,7 @@ class CreateProjectsTable extends Migration
             $table->date('expected_end_date');
             $table->date('effective_end_date');
             $table->decimal('cost_pr_hour', 5, 2);
-            $table->string('note');
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }
