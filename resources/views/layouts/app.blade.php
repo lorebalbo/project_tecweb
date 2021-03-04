@@ -83,42 +83,42 @@
                         <!-- Admin -->
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ URL::action('HomeController@adminHome') }}">Home</a>
+                                <a class="nav-link {{ Route::is('admin.home') ? 'active' : ''}}" href="{{ URL::action('HomeController@adminHome') }}">Home</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ URL::action('ProjectController@index') }}">Progetti</a>
+                                <a class="nav-link {{ Route::is('project.index','project.create','project.edit','project.show','userproject.index','userproject.create') ? 'active' : ''}}" href="{{ URL::action('ProjectController@index') }}">Progetti</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ URL::action('ClientController@index') }}">Clienti</a>
+                                <a class="nav-link {{ Route::is('client.index','client.create','client.edit') ? 'active' : ''}}" href="{{ URL::action('ClientController@index') }}">Clienti</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ URL::action('UserController@index') }}">Utenti</a>
+                                <a class="nav-link {{ Route::is('user.index','user.create','user.edit') ? 'active' : ''}}" href="{{ URL::action('UserController@index') }}">Utenti</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ URL::action('AdminReportController@project_hours') }}">Report Ore Progetti</a>
+                                <a class="nav-link {{ Route::is('admin_report.search_project_hours','admin_report.project_hours') ? 'active' : ''}}" href="{{ URL::action('AdminReportController@project_hours') }}">Report Ore Progetti</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ URL::action('AdminReportController@client_hours') }}">Report Ore Clienti</a>
+                                <a class="nav-link {{ Route::is('admin_report.search_client_hours','admin_report.client_hours') ? 'active' : ''}}" href="{{ URL::action('AdminReportController@client_hours') }}">Report Ore Clienti</a>
                             </li>
                         </ul>
                         @else
                         <!-- Utente semplice -->
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link {{ request()->is('home') ? 'active' : ''}}" href="{{ URL::action('HomeController@index') }}">Home</a>
+                                <a class="nav-link {{ Route::is('home') ? 'active' : ''}}" href="{{ URL::action('HomeController@index') }}">Home</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link {{ request()->is('report') ? 'active' : ''}}" href="{{ URL::action('ReportController@index') }}">Report Ore</a>
+                                <a class="nav-link {{ Route::is('report.index') ? 'active' : ''}}" href="{{ URL::action('ReportController@index') }}">Report Ore</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link {{ request()->is('work','work/search', 'work/create', 'work/edit') ? 'active' : ''}}" href="{{ URL::action('WorkController@index') }}">Scheda Ore</a>
+                                <a class="nav-link {{ Route::is('work.index','work.search','work.create','work.edit') ? 'active' : ''}}" href="{{ URL::action('WorkController@index') }}">Scheda Ore</a>
                             </li>
                         </ul>
                         @endif
