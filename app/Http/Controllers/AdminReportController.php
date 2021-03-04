@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Carbon\Carbon;
+use Redirect;
+
 
 class AdminReportController extends Controller
 {
@@ -45,6 +47,16 @@ class AdminReportController extends Controller
         //LOG::info($dateS);
         //LOG::info($dateE);
 
+        /* Controllo che siano state inserite delle date*/
+        if($dateE == NULL || $dateS == NULL){
+            return Redirect::back()->withErrors('Nessuna data inserita');
+        }
+
+        /* Controllo che la data "DA" sia minore della data "A" */
+        if($dateS > $dateE){
+            return Redirect::back()->withErrors('La data di inizio deve essere minore di quella di fine');
+        }
+
         $project_hours = DB::table('works')
         ->select('projects.name', DB::raw('SUM(works.hour) as ore'))
         ->join('users','users.id','works.user_id')
@@ -54,6 +66,11 @@ class AdminReportController extends Controller
         ->get();
 
         LOG::info($project_hours);
+
+        /* Messaggio in caso non venga trovato nessun risultato */
+        if($project_hours->isEmpty()){
+            return view('adminReports.search_project_hours', compact('project_hours'), compact('request'))->with('msg','Nessun record da visualizzare tra queste date');
+        }  
 
         return view('adminReports.search_project_hours', compact('project_hours'), compact('request'));
     }
@@ -85,6 +102,16 @@ class AdminReportController extends Controller
         //LOG::info($dateS);
         //LOG::info($dateE);
 
+        /* Controllo che siano state inserite delle date*/
+        if($dateE == NULL || $dateS == NULL){
+            return Redirect::back()->withErrors('Nessuna data inserita');
+        }
+
+        /* Controllo che la data "DA" sia minore della data "A" */
+        if($dateS > $dateE){
+            return Redirect::back()->withErrors('La data di inizio deve essere minore di quella di fine');
+        }
+
         $client_hours = DB::table('projects')
         ->select('clients.business_name', DB::raw('SUM(works.hour) as ore'))
         ->join('works','works.project_id','projects.id')
@@ -93,7 +120,12 @@ class AdminReportController extends Controller
         ->groupBy('clients.business_name')
         ->get();
 
-        LOG::info($client_hours);
+        /* Messaggio in caso non venga trovato nessun risultato */
+        if($client_hours->isEmpty()){
+            return view('adminReports.search_client_hours', compact('client_hours'), compact('request'))->with('msg','Nessun record da visualizzare tra queste date');
+        }  
+
+        //LOG::info($client_hours);
 
         return view('adminReports.search_client_hours', compact('client_hours'), compact('request'));
     }

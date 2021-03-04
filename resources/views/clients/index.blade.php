@@ -2,14 +2,18 @@
 
 @section('content')
 <div class="container">
-    <h1>Tutti i clienti</h1>
+    
+    <div class="pb-2 mt-4 mb-2 border-bottom">
+        <h1>Anagrafica Clienti</h1> 
+    </div>
 
-    <a href="{{ URL::action('ClientController@create') }}" class="btn btn-primary float-md-right mb-2">Aggiungi</a>
+    <div class="mt-5"></div>
 
-    <table class="table table-striped">
+    <a href="{{ URL::action('ClientController@create') }}" class="btn btn-outline-dark float-md-right mb-2">Aggiungi</a>
+
+    <table class="table">
         <thead>
             <tr>
-                <th scope="col">Id</th>
                 <th scope="col">Nome Referente</th>
                 <th scope="col">Cognome referente</th>
                 <th scope="col">Email Referente</th>
@@ -20,12 +24,11 @@
         <tbody>
             @foreach($clients as $c)
             <tr>
-                <th>{{ $c->id }}</th>
                 <td>{{ $c->contact_name }}</td>
                 <td>{{ $c->contact_surname }}</td>
                 <td>{{ $c->contact_email }}</td>
                 <td>{{ $c->business_name }}</td>
-                <td><a href="{{ URL::action('ClientController@edit', $c) }}" class="btn btn-outline-primary btn-sm">Modifica</a></td>
+                <td><a href="{{ URL::action('ClientController@edit', $c) }}" class="btn btn-outline-dark btn-sm">Modifica</a></td>
             </tr>
             @endforeach
         </tbody>

@@ -7,7 +7,6 @@
     <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Compilazione Scheda Ore</h1>
     </div>
-    <p class="lead">Inserisci i dettagli della giornata di lavoro</p>
 
     <div class="mt-5"></div> 
 
@@ -44,7 +43,7 @@
             <small class="form-text text-muted">Inserisci quante ore hai lavorato al progetto</small>
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-4">
             <label for="project_id">Seleziona il progetto</label>
             <select class="custom-select" name="project_id">
             @foreach($projects as $project)
@@ -53,7 +52,7 @@
             </select>
         </div>        
 
-        <button type="submit" class="btn btn-light">Salva</button>
+        <button type="submit" class="btn btn-dark">Salva</button>
         <a href="{{ URL::action('WorkController@index') }}" class="btn btn-secondary">Indietro</a>
     </form>
 </div>

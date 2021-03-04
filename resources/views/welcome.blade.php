@@ -4,17 +4,36 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>R.A.S.</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        
 
         <!-- Styles -->
         <style>
+            .container {
+                width: 100%;
+                padding: 0;
+                background-color: black;
+                
+            }
+            .container>.overlay>img {
+                position: fixed;
+                width: 100%;
+                opacity:0.5;
+                
+            }
+            .container>.overlay {
+                width: 100%;
+                height: 100%;
+                z-index: 3;
+                background-color: black;
+            }
+
             html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
+                background-color: #000000;
+                color: #ffffff;
+                font-family: "Palatino", serif ;
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
@@ -48,10 +67,21 @@
                 font-size: 84px;
             }
 
-            .links > a {
-                color: #636b6f;
+            .sub-title {
+                color: #ffffff;
                 padding: 0 25px;
-                font-size: 13px;
+                font-size: 15px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+                word-spacing: 30px;
+            }
+            
+            .links > a {
+                color: #ffffff;
+                padding: 0 25px;
+                font-size: 15px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
@@ -64,6 +94,11 @@
         </style>
     </head>
     <body>
+        <div class="container">
+            <div class="overlay">
+                <img src="welcome.jpg" />
+            </div>
+        </div>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -87,19 +122,10 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    R.A.S.
                 </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                <div class="sub-title">Report Attività Svolte</div>
+                
             </div>
         </div>
     </body>

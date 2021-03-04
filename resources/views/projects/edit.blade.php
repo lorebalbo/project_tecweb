@@ -3,7 +3,22 @@
 @section('content')
 
 <div class="container">
-    <h1>Modifica un progetto</h1>
+    
+    <div class="pb-2 mt-4 mb-2 border-bottom">
+        <h1>Modifica progetto</h1>
+    </div>
+
+    <div class="mt-5"></div>
+    
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <form action="{{ URL::action('ProjectController@update', $project) }}" method="POST">
         <input type="hidden" name="_method" value="PATCH">
@@ -48,10 +63,10 @@
         <div class="form-group">
             <label for="note">Note</label>
             <input type="text" class="form-control" name="note" value="{{ $project->note }}">
-            <small class="form-text text-muted">Modifica qui le eventuali note</small>
+            <small class="form-text text-muted">Modifica le eventuali note</small>
         </div>
 
-        <button type="submit" class="btn btn-primary">Aggiorna</button>
+        <button type="submit" class="btn btn-dark">Aggiorna</button>
         
         <a href="{{ URL::action('ProjectController@destroy', $project) }}" class="btn btn-danger">Cancella</a>
 

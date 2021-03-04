@@ -7,7 +7,7 @@
         <h1>Scheda Ore</h1> 
     </div>
 
-    <p class="h5">Seleziona due date per vedere le attività svolte nel preiodo</p>
+    <p class="lead">Seleziona due date per vedere le attività svolte nel preiodo</p>
 
     <div class="mt-5"></div>   
 
@@ -43,14 +43,14 @@
     <div class="mt-5"></div>   
 
     <div class="pb-2 mt-4 mb-2 border-bottom"></div>
-    <p class="h5">Attività svolte nel mese corrente</p>
+    <p class="lead">Attività svolte nel mese corrente</p>
     
     <div class="mt-5"></div> 
       
 
     <a href="{{ URL::action('WorkController@create') }}" class="btn btn-outline-dark float-md-right mb-2" >Aggiungi</a>
     <table id="order_data" class="table">
-        <thead style="color: #ffffff; background-color: #0A3E52;">
+        <thead >
             <tr>
                 <th scope="col">Progetto</th>
                 <th scope="col">Descrizione attività</th>

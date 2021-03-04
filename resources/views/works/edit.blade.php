@@ -60,7 +60,7 @@
             <small class="form-text text-muted">Modifica il numero di ore</small>
         </div>
 
-        <button type="submit" class="btn btn-light">Aggiorna</button>
+        <button type="submit" class="btn btn-dark">Aggiorna</button>
         
         <a href="{{ URL::action('WorkController@destroy', $work) }}" class="btn btn-danger">Cancella</a>
 

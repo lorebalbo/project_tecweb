@@ -3,8 +3,13 @@
 @section('content')
 
 <div class="container">
-    <h1>Inserisci un nuovo cliente</h1>
 
+    <div class="pb-2 mt-4 mb-2 border-bottom">
+        <h1>Inserisci un nuovo cliente</h1> 
+    </div>
+
+    <div class="mt-5"></div>
+    
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -41,7 +46,7 @@
             <small class="form-text text-muted">Inserisci la ragione sociale</small>
         </div>
 
-        <button id="add-class-btn" type="submit" class="btn btn-primary" >Salva</button>
+        <button id="add-class-btn" type="submit" class="btn btn-dark" >Salva</button>
         <a href="{{ URL::action('ClientController@index') }}" class="btn btn-secondary">Indietro</a>
     </form>
 </div>

@@ -3,7 +3,12 @@
 @section('content')
 
 <div class="container">
-    <h1>Associa un nuovo utente</h1>
+
+    <div class="pb-2 mt-4 mb-2 border-bottom">
+        <h1>Associa un nuovo utente al progetto: {{ $project->name }}</h1>
+    </div>
+
+    <div class="mt-5"></div>
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -40,7 +45,7 @@
             </select>
         </div>        
 
-        <button type="submit" class="btn btn-primary">Salva</button>
+        <button type="submit" class="btn btn-dark">Salva</button>
         <a href="{{ URL::action('UserProjectController@index', $project) }}" class="btn btn-secondary">Indietro</a>
     </form>
 </div>

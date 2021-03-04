@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\Project;
 use Illuminate\Http\Request;
 use Log;
 
@@ -107,6 +108,14 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
+        /* Controllo che il cliente non sia associato ad un progetto */
+        $progetti = Project::where('client_id',$client->id)->get(); 
+         
+        if($progetti->isNotEmpty()){
+            //LOG::info($associazioni);
+            return view('clients.edit', compact('client'))->withErrors("il cliente è associato ad uno o più progetti");
+        }
+
         $client->delete();
 
         return redirect('/admin/client');

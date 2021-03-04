@@ -53,15 +53,18 @@ class WorkController extends Controller
     public function create()
     {
         /* Ottengo l'id dell'utente corrente */
-        $userId = Auth::id();
+        $userId = Auth::id();        
 
-        /* Ottengo i progetti a cui lavora l'utente */
+        /* Ottengo i progetti non terminati a cui lavora l'utente */
         $projects = DB::table('projects')
         ->select('projects.id','projects.name')
         ->join('user_projects','user_projects.project_id','projects.id')
         ->join('users','users.id','user_projects.user_id')
         ->where('user_projects.user_id', $userId)
+        ->where('effective_end_date','>',Carbon::now())
+        ->orWhereNull('projects.effective_end_date')
         ->get();
+        //LOG::info($projects);
 
         return view('works.create', compact('projects'));
     }
@@ -250,8 +253,14 @@ class WorkController extends Controller
         Log::info($inizio);
         Log::info($fine);
 
+        /* Controllo che siano state inserite delle date*/
         if($fine == NULL || $inizio == NULL){
             return Redirect::back()->withErrors('Nessuna data inserita');
+        }
+
+        /* Controllo che la data "DA" sia minore della data "A" */
+        if($inizio > $fine){
+            return Redirect::back()->withErrors('La data di inizio deve essere minore di quella di fine');
         }
 
         $works = Work::join('users','users.id','works.user_id')
@@ -262,6 +271,11 @@ class WorkController extends Controller
         ->select('works.*','projects.name')
         ->orderBy('date', 'desc')
         ->get();
+        LOG::info($works);
+
+        if($works->isEmpty()){
+            return view('works.search', compact('works'), compact('request'))->with('msg','Nessun record da visualizzare tra queste date');
+        }
 
         return view('works.search', compact('works'), compact('request'));
     }  

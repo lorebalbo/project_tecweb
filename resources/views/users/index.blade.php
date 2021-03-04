@@ -2,14 +2,19 @@
 
 @section('content')
 <div class="container">
-    <h1>Tutti gli utenti</h1>
+    
+    <div class="pb-2 mt-4 mb-2 border-bottom">
+        <h1>Anagrafica Utenti</h1> 
+    </div>
 
-    <a href="{{ URL::action('UserController@create') }}" class="btn btn-primary float-md-right mb-2">Aggiungi</a>
+    <div class="mt-5"></div>
+
+    <a href="{{ URL::action('UserController@create') }}" class="btn btn-outline-dark float-md-right mb-2">Aggiungi</a>
 
     <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col"></th>
+                
                 <th scope="col">Admin</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Cognome</th>
@@ -20,12 +25,11 @@
         <tbody>
             @foreach($users as $p)
             <tr>
-                <td> <div id="circle" style="background-color:{{ $p->color }}"></div> </td>
-                <th scope="row">{{ $p->is_admin }}</th>
+                <th scope="row">@if($p->is_admin == 1) <div id="circle" style="background-color:{{ $p->color }}"></div>@endif</th>
                 <td>{{ $p->name }}</td>
                 <td>{{ $p->surname }}</td>
                 <td>{{ $p->email }}</td>
-                <td><a href="{{ URL::action('UserController@edit', $p) }}" class="btn btn-outline-primary btn-sm">Modifica</a></td>
+                <td><a href="{{ URL::action('UserController@edit', $p) }}" class="btn btn-outline-dark btn-sm">Modifica</a></td>
             </tr>
             @endforeach
         </tbody>

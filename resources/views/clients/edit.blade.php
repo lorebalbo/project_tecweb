@@ -3,7 +3,22 @@
 @section('content')
 
 <div class="container">
-    <h1>Modifica un cliente</h1>
+    
+    <div class="pb-2 mt-4 mb-2 border-bottom">
+        <h1>Modifica cliente</h1> 
+    </div>
+
+    <div class="mt-5"></div>
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <form action="{{ URL::action('ClientController@update', $client) }}" method="POST">
         <input type="hidden" name="_method" value="PATCH">
@@ -33,7 +48,7 @@
             <small class="form-text text-muted">Modifica la data di fine prevista</small>
         </div>
 
-        <button type="submit" class="btn btn-primary">Aggiorna</button>
+        <button type="submit" class="btn btn-dark">Aggiorna</button>
         
         <a href="{{ URL::action('ClientController@destroy', $client) }}" class="btn btn-danger">Cancella</a>
 

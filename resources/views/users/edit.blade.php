@@ -3,7 +3,22 @@
 @section('content')
 
 <div class="container">
-    <h1>Modifica un utente</h1>
+    
+    <div class="pb-2 mt-4 mb-2 border-bottom">
+        <h1>Modifica utente</h1> 
+    </div>
+
+    <div class="mt-5"></div>
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <form action="{{ URL::action('UserController@update', $user) }}" method="POST">
         <input type="hidden" name="_method" value="PATCH">
@@ -28,9 +43,9 @@
             <small class="form-text text-muted">Inserisci il cognome dell'utente</small>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="display: none;">
             <label for="color">Colore</label>
-            <input type="color" class="form-control" name="color" value="{{ $user->color }}">
+            <input type="color" class="form-control" name="color" value="#3498DB">
             <small class="form-text text-muted">Assegna un colore all'utente</small>
         </div>
 
@@ -40,7 +55,7 @@
             <small class="form-text text-muted">Inserisci la mail dell'utente</small>
         </div>
 
-        <button type="submit" class="btn btn-primary">Aggiorna</button>
+        <button type="submit" class="btn btn-dark">Aggiorna</button>
         
         <a href="{{ URL::action('UserController@destroy', $user) }}" class="btn btn-danger">Cancella</a>
 

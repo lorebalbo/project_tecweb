@@ -6,16 +6,18 @@
     <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Scheda Ore</h1> 
     </div>
-    <p>Elenco delle attività svolte dal {{ date('d/m/Y', strtotime($request['from_date'])) }} al {{ date('d/m/Y', strtotime($request['to_date'])) }}</p>
+    <p class="lead">Elenco delle attività svolte dal {{ date('d/m/Y', strtotime($request['from_date'])) }} al {{ date('d/m/Y', strtotime($request['to_date'])) }}</p>
 
     <div class="mt-5"></div>
     
-    
+    @if (!empty($msg))
+        <div class="alert alert-primary">{{ $msg }}</div>
+    @endif    
 
     <a href="{{ URL::action('WorkController@index') }}" class="btn btn-secondary float-md-right mb-2">Indietro</a>
     
     <table id="order_data" class="table">
-        <thead class="thead-dark">
+        <thead>
             <tr>
                 <th scope="col">Progetto</th>
                 <th scope="col">Descrizione</th>

@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    
+    <title>R.A.S.</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -17,16 +17,59 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-    
-</head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark shadow-sm" style="background-color: #0A3E52;">
-            <div class="container">
+
+    @guest
+        <style>
+            .bg-immagin {
+                background-color: black;
+            }
+            .container-bg {
+                width: 100%;
+                padding: 0;
+                background-color: black;
                 
+            }
+            .container-bg>.overlay-bg>img {
+                position: fixed;
+                width: 100%;
+                opacity:0.5;
+                
+            }
+            .container-bg>.overlay-bg {
+                width: 100%;
+                height: 100%;
+                z-index: 3;
+                background-color: black;
+            }
+        </style>
+    @endguest
+
+</head>
+<body class="bg-immagin">
+    
+    @guest
+        <div class="container-bg">
+            <div class="overlay-bg">
+                <img src="welcome.jpg" />
+            </div>
+        </div>
+    @endguest    
+
+    <div id="app">
+        
+        <nav class="navbar navbar-expand-md navbar-dark shadow" style="background-color: #0A3E52;">
+            <div class="container">
+            @guest
+            <a class="navbar-brand" href="{{ url('/') }}">
+                    R.A.S.
+                </a>
+                @endguest
                 <!-- Ombra bottone Home
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -39,6 +82,10 @@
                         @if(Auth::User()->is_admin=='1')  <!-- Controllo se l'utente è admin -->
                         <!-- Admin -->
                         <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ URL::action('HomeController@adminHome') }}">Home</a>
+                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ URL::action('ProjectController@index') }}">Progetti</a>
                             </li>
@@ -82,11 +129,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}" style="background-color: #0A3E52; color:#ffffff; ">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}" style="background-color: #0A3E52; color:#ffffff; ">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else

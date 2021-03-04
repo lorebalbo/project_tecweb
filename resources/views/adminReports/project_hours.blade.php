@@ -4,12 +4,22 @@
 <div class="container">
 
     <div class="pb-2 mt-4 mb-2 border-bottom">
-        <h1>Report</h1>      
+        <h1>Report ore progetti</h1>      
     </div>
 
-    <p>Seleziona due date per vedere il totale delle ore spese su ogni progetto in un determinato periodo</p>
+    <p class="lead">Seleziona due date per vedere il totale delle ore spese su ogni progetto in un determinato periodo</p>
 
-    <div class="mt-5"></div>   
+    <div class="mt-5"></div>  
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif 
 
     <form action="{{ URL::action('AdminReportController@search_project_hours') }}" method="POST">
         {{ csrf_field() }}
@@ -31,8 +41,8 @@
     </form>
 
     <div class="mt-5"></div>  
-
-    <p>Ecco il totale delle ore spese su ogni progetto questo mese</p>  
+    <div class="pb-2 mt-4 mb-2 border-bottom"></div>
+    <p class="lead">Totale delle ore spese su ogni progetto questo mese</p>  
 
     <div class="mt-5"></div>     
 

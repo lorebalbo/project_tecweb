@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\UserProject;
+use App\Work;
 use Log;
 
 class UserController extends Controller
@@ -108,6 +110,15 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        /* Controllo che l'utente non sia associato a progetti o ad attività */
+        $associazioni = UserProject::where('user_id',$user->id)->get(); 
+        $attivita = Work::where('user_id',$user->id)->get(); 
+        
+        if($associazioni->isNotEmpty() || $attivita->isNotEmpty()){
+            LOG::info($associazioni);
+            return view('users.edit', compact('user'))->withErrors("l'utente è associato a progetti o attività");
+        }
+
         $user->delete();
 
         return redirect('/admin/user');
