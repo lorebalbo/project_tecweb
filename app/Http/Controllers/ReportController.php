@@ -22,16 +22,33 @@ class ReportController extends Controller
         $userId = Auth::id();
 
         $works = DB::table('works')
-        ->select('projects.name', DB::raw('SUM(works.hour) as ore'))
+        ->select('projects.name as name', DB::raw('SUM(works.hour) as ore'))
         ->join('users','users.id','works.user_id')
         ->join('projects','projects.id','works.project_id')
         ->where('works.user_id', $userId)
         ->groupBy('projects.name')
         ->get();
 
-        LOG::info($works);
+        
+        $data = DB::table('works')
+        ->select(
+         DB::raw('projects.name as name'),
+         DB::raw('count(works.hour) as ore'))
+         ->join('users','users.id','works.user_id')->join('projects','projects.id','works.project_id')
+         ->where('works.user_id', $userId)
+        ->groupBy('projects.name')
+        ->get();
 
-        return view('reports.index', compact('works'));
+
+        $array[] = ['Name', 'Ore'];
+        foreach($data as $key => $value)
+        {
+          $array[++$key] = [$value->name, $value->ore];
+        }
+
+        LOG::info($array);
+
+        return view('reports.index', compact('works'))->with('name', json_encode($array));
     }
 
     /**

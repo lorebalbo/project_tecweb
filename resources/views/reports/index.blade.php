@@ -3,10 +3,11 @@
 @section('content')
 <div class="container">
 
+    
     <div class="pb-2 mt-4 mb-2 border-bottom">
         <h1>Report</h1>      
     </div>
-    <p class="lead">Visualizza il totale delle ore che hai speso su ogni progetto</p>  
+    <p class="lead">Totale delle ore che hai speso su ogni progetto</p>  
 
     <div class="mt-5"></div>     
 
@@ -26,5 +27,39 @@
             @endforeach
         </tbody>
     </table>
+    
+    <div class="mt-5"></div> 
+
+    <div class="pb-2 mt-4 mb-2 border-bottom"></div>
+    <p class="lead">Attivià svolte sui progetti</p>  
+
+   
+    
+    <div class="panel-body d-flex justify-content-center">
+        <div id="pie_chart" style="width:750px; height:450px;"></div>
+    </div>
 </div>
+
+<script type="text/javascript">
+
+    var analytics = <?php echo $name; ?>
+    
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart()
+    {
+        var data = google.visualization.arrayToDataTable(analytics);
+        var options = {
+        
+        //title : 'Percentage of Students Courses(BCA,BCOM,BSC)'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+
+    chart.draw(data, options);
+    }
+</script>
+
+
 @endsection
